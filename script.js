@@ -333,7 +333,13 @@ function buscar(){
 }
 
 // 📂 FILTRAR POR CATEGORIA
-function filtrarCategoria(categoria){
+function filtrarCategoria(categoria, evt){
+
+  document.querySelectorAll(".filtros button")
+    .forEach(btn => btn.classList.remove("ativo"));
+
+  if(evt) evt.currentTarget.classList.add("ativo");
+
   if(categoria === "todas"){
     render(produtos);
     return;

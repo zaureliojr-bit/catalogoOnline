@@ -329,8 +329,13 @@ function limparCarrinho(){
 // 🔎 BUSCAR
 function buscar(){
   let termo = document.getElementById("busca").value.toLowerCase();
-  render(produtos.filter(p => p.nome.toLowerCase().includes(termo)));
+  render(produtos.filter(p => (p.nome || "").toLowerCase().includes(termo)));
 }
+
+// 🔎 BUSCAR AO PRESSIONAR ENTER
+document.getElementById("busca").addEventListener("keydown", (e) => {
+  if(e.key === "Enter") buscar();
+});
 
 // 📂 FILTRAR POR CATEGORIA
 function filtrarCategoria(categoria, evt){

@@ -239,7 +239,7 @@ function finalizar(){
     }
   }
 
-  let numeroPedido = localStorage.getItem("pedidoNumero") || 1;
+  let numeroPedido = Date.now().toString().slice(-6);
 
   let agora = new Date();
   let data = agora.toLocaleDateString();
@@ -283,8 +283,6 @@ function finalizar(){
 
   texto += "\n━━━━━━━━━━━━━━━\n";
   texto += "🚀 Pedido enviado automaticamente";
-
-  localStorage.setItem("pedidoNumero", Number(numeroPedido) + 1);
 
   // 🚀 ABRE WHATSAPP
   window.open("https://wa.me/5532991933822?text=" + encodeURIComponent(texto));

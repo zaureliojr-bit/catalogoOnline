@@ -43,16 +43,24 @@ function render(lista){
     let item = carrinho.find(i=>i.codigo === p.codigo);
     let qtd = item ? item.qtd : 0;
 
+    let botao = qtd > 0
+      ? `<div class="fab-stepper">
+           <button onclick="menos('${p.codigo}')">−</button>
+           <span>${qtd}</span>
+           <button onclick="add('${p.codigo}')">+</button>
+         </div>`
+      : `<button class="fab-add" onclick="add('${p.codigo}')">+</button>`;
+
     container.innerHTML += `
       <div class="card">
-        <img src="${escapeHtml(p.imagem || 'https://via.placeholder.com/150')}">
-        <b>${escapeHtml(p.nome)}</b>
-        <span>R$ ${Number(p.preco).toFixed(2)}</span>
+        <div class="card-media">
+          <img src="${escapeHtml(p.imagem || 'https://via.placeholder.com/150')}">
+          ${botao}
+        </div>
 
-        <div class="controls">
-          <button onclick="menos('${p.codigo}')">-</button>
-          <span>${qtd}</span>
-          <button onclick="add('${p.codigo}')">+</button>
+        <div class="card-info">
+          <b>${escapeHtml(p.nome)}</b>
+          <span class="preco">R$ ${Number(p.preco).toFixed(2)}</span>
         </div>
       </div>
     `;

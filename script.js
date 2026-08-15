@@ -20,6 +20,16 @@ async function carregar(){
   }
 }
 
+// 🛡️ ESCAPAR HTML (evita XSS vindo dos dados da planilha)
+function escapeHtml(str){
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 // 🎨 RENDER PRODUTOS
 function render(lista){
 
@@ -35,8 +45,8 @@ function render(lista){
 
     container.innerHTML += `
       <div class="card">
-        <img src="${p.imagem || 'https://via.placeholder.com/150'}">
-        <b>${p.nome}</b>
+        <img src="${escapeHtml(p.imagem || 'https://via.placeholder.com/150')}">
+        <b>${escapeHtml(p.nome)}</b>
         <span>R$ ${Number(p.preco).toFixed(2)}</span>
 
         <div class="controls">
@@ -52,10 +62,10 @@ function render(lista){
 // ➕ ADICIONAR
 function add(codigo){
 
-  let produto = produtos.find(p=>p.codigo === codigo);
+  let produto = produtos.find(p=>String(p.codigo) === String(codigo));
   if(!produto) return;
 
-  let item = carrinho.find(p=>p.codigo === codigo);
+  let item = carrinho.find(p=>String(p.codigo) === String(codigo));
 
   if(item){
     item.qtd++;
@@ -74,13 +84,13 @@ function add(codigo){
 // ➖ REMOVER
 function menos(codigo){
 
-  let item = carrinho.find(p=>p.codigo === codigo);
+  let item = carrinho.find(p=>String(p.codigo) === String(codigo));
   if(!item) return;
 
   item.qtd--;
 
   if(item.qtd <= 0){
-    carrinho = carrinho.filter(p=>p.codigo !== codigo);
+    carrinho = carrinho.filter(p=>String(p.codigo) !== String(codigo));
   }
 
   salvar();
@@ -124,7 +134,7 @@ function renderizarCarrinho(){
   carrinho.forEach(p=>{
     container.innerHTML += `
       <div class="item">
-        ${p.nome} x${p.qtd}
+        ${escapeHtml(p.nome)} x${p.qtd}
       </div>
     `;
   });
@@ -176,6 +186,14 @@ function selecionarTroco(valor){
 
   document.getElementById("trocoInput").value = "";
 }
+
+// ✍️ TROCO DIGITADO MANUALMENTE (cancela a seleção dos botões)
+document.getElementById("trocoInput").addEventListener("input", () => {
+  trocoSelecionado = null;
+
+  document.querySelectorAll(".troco-opcoes button")
+    .forEach(btn => btn.classList.remove("ativo"));
+});
 
 // 📲 FINALIZAR PEDIDO — PREMIUM
 function finalizar(){

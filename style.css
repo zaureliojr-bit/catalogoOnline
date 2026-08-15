@@ -87,6 +87,12 @@ body {
   font-size: 12px;
   cursor: pointer;
   white-space: nowrap;
+  transition: 0.2s;
+}
+
+.filtros button.ativo {
+  background: #ff7f00;
+  color: #fff;
 }
 
 /* PRODUTOS RESPONSIVO TOP */

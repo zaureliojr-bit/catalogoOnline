@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 💥 ESSA LINHA RESOLVE O PROBLEMA DO CELULAR -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Cafofo da Sissi</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+
+  <div class="header-left">
+    <img src="https://i.ibb.co/ZRt23jfV/C-pia-de-Yellow-Inspiration-Modern-Instagram-Profile-Picture.png" class="logo-gif">
+
+    <div class="titulo">
+      <h1>Cafofo da Sissi 🍔</h1>
+      <span id="status">🔴 Carregando...</span>
+    </div>
+  </div>
+
+  <div class="header-right" onclick="toggleCarrinho()">
+    🛒 <span id="qtdTop">(0)</span>
+    <span id="totalTop">R$ 0,00</span>
+  </div>
+
+</div>
+
+<div class="busca-container">
+  <input type="text" id="busca" placeholder="Buscar produto...">
+  <button onclick="buscar()">Buscar</button>
+</div>
+
+<div class="filtros">
+  <button onclick="filtrarCategoria('todas')">Todas</button>
+  <button onclick="filtrarCategoria('pasteis')">Pastéis</button>
+  <button onclick="filtrarCategoria('lanches')">Lanches</button>
+  <button onclick="filtrarCategoria('bebidas')">Bebidas</button>
+</div>
+
+<div id="produtos"></div>
+
+<div id="carrinho" class="carrinho">
+  <div class="carrinho-header" onclick="toggleCarrinho()">
+    🛒 <span id="qtd">(0)</span> <span id="total">Total: R$ 0,00</span>
+  </div>
+
+  <div class="carrinho-body">
+    <div id="itens"></div>
+
+    <select id="tipo" onchange="toggleTipo()">
+      <option value="">Entrega ou Retirada</option>
+      <option value="Entrega">Entrega</option>
+      <option value="Retirada">Retirada</option>
+    </select>
+
+    <input type="text" id="nome" placeholder="Nome">
+    <input type="text" id="telefone" placeholder="Telefone">
+
+    <div id="boxEndereco" style="display:none;">
+      <input type="text" id="endereco" placeholder="Endereço">
+    </div>
+
+    <div id="boxPagamento" style="display:none;">
+      <select id="pagamento" onchange="togglePagamento()">
+        <option value="">Pagamento</option>
+        <option>Pix</option>
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+      </select>
+    </div>
+
+    <div id="boxTroco" style="display:none">
+      <p>Precisa de troco?</p>
+
+      <div class="troco-opcoes">
+        <button onclick="selecionarTroco(0)">Não preciso</button>
+        <button onclick="selecionarTroco(50)">R$ 50</button>
+        <button onclick="selecionarTroco(100)">R$ 100</button>
+        <button onclick="selecionarTroco(200)">R$ 200</button>
+      </div>
+
+      <input id="trocoInput" type="number" placeholder="Ou digite outro valor">
+    </div>
+
+    <button onclick="finalizar()">Finalizar Pedido</button>
+    <button onclick="limparCarrinho()">Limpar</button>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<footer style="text-align:center; padding:25px; font-size:14px; color:#777; margin-top:30px;">
+
+  <p>⚠️ Imagem meramente ilustrativa.</p>
+
+  <p>© Cafofo da Sissi - Todos os direitos reservados.</p>
+
+  <div style="margin-top:15px; padding:15px; border-radius:10px; background:#f5f5f5;">
+    <p style="margin:0; font-size:13px; color:#444;">
+      🚀 Quer um cardápio digital ou site para seu pequeno negócio?
+    </p>
+    <p style="margin:5px 0 10px; font-size:13px; color:#444;">
+      Aumente suas vendas pelo WhatsApp e Instagram com um sistema simples e bonito.
+    </p>
+
+    <a href="https://wa.me/5511940266948?text=Olá!%20Tenho%20interesse%20em%20um%20cardápio%20digital%20para%20meu%20negócio."
+       target="_blank"
+       style="display:inline-block; background:#25D366; color:white; padding:10px 15px; border-radius:8px; text-decoration:none; font-weight:bold;">
+      QUERO MEU CARDÁPIO AGORA 📲
+    </a>
+  </div>
+<p>
+    Desenvolvido por
+    <a href="https://wa.me/5511940266948" target="_blank" style="color:#25D366; font-weight:bold; text-decoration:none;">
+      RC Digital 💻
+    </a>
+  </p>
+</footer>
+
+</body>
+</html>

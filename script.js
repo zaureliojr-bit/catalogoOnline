@@ -220,6 +220,8 @@ function finalizar(){
   let trocoInput = document.getElementById("trocoInput")?.value || "";
   let troco = trocoSelecionado !== null ? trocoSelecionado : trocoInput;
 
+  let observacao = document.getElementById("observacao")?.value.trim() || "";
+
   if(!nome || !telefone || !tipo){
     alert("Preencha os dados");
     return;
@@ -289,6 +291,11 @@ function finalizar(){
     }
   }
 
+  if(observacao){
+    texto += "\n📝 *OBSERVAÇÕES*\n";
+    texto += `${observacao}\n`;
+  }
+
   texto += "\n━━━━━━━━━━━━━━━\n";
   texto += "🚀 Pedido enviado automaticamente";
 
@@ -307,6 +314,7 @@ function finalizar(){
     document.getElementById("endereco").value = "";
     document.getElementById("pagamento").value = "";
     document.getElementById("tipo").value = "";
+    document.getElementById("observacao").value = "";
 
     // 🔄 RESET TROCO
     trocoSelecionado = null;
@@ -351,6 +359,11 @@ function filtrarCategoria(categoria, evt){
   }
 
   render(produtos.filter(p => p.categoria === categoria));
+}
+
+// 📲 PWA (instalar no celular + funcionar offline)
+if("serviceWorker" in navigator){
+  navigator.serviceWorker.register("sw.js").catch(() => {});
 }
 
 // 🚀 START

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Cafofo da Sissi — Balcão</title>
+
+  <meta name="theme-color" content="#ff7f00">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+
+  <div class="header-left">
+    <img src="https://i.ibb.co/ZRt23jfV/C-pia-de-Yellow-Inspiration-Modern-Instagram-Profile-Picture.png" class="logo-gif">
+
+    <div class="titulo">
+      <h1>Cafofo da Sissi 🍔</h1>
+      <span id="status">🔴 Carregando... · Balcão</span>
+    </div>
+  </div>
+
+  <div class="header-right" onclick="toggleCarrinho()">
+    🛒 <span id="qtdTop">(0)</span>
+    <span id="totalTop">R$ 0,00</span>
+  </div>
+
+</div>
+
+<div class="busca-container">
+  <input type="text" id="busca" placeholder="Buscar produto...">
+  <button onclick="buscar()">Buscar</button>
+</div>
+
+<div class="filtros">
+  <button class="ativo" onclick="filtrarCategoria('todas', event)">Todas</button>
+  <button onclick="filtrarCategoria('pasteis', event)">Pastéis</button>
+  <button onclick="filtrarCategoria('lanches', event)">Lanches</button>
+  <button onclick="filtrarCategoria('bebidas', event)">Bebidas</button>
+</div>
+
+<div id="produtos"></div>
+
+<div id="carrinho" class="carrinho">
+  <div class="carrinho-header" onclick="toggleCarrinho()">
+    🛒 <span id="qtd">(0)</span> <span id="total">Total: R$ 0,00</span>
+  </div>
+
+  <div class="carrinho-body">
+    <div id="itens"></div>
+
+    <select id="local" onchange="toggleLocal()">
+      <option value="">Balcão ou Mesa?</option>
+      <option value="Balcão">Balcão</option>
+      <option value="Mesa">Mesa</option>
+    </select>
+
+    <div id="boxMesa" style="display:none;">
+      <input type="text" id="mesa" placeholder="Número da mesa">
+    </div>
+
+    <input type="text" id="clienteNome" placeholder="Nome do cliente (opcional)">
+
+    <textarea id="observacaoBalcao" placeholder="Observações (opcional) — ex: sem cebola, ponto da carne..."></textarea>
+
+    <button onclick="enviarPedido()">Enviar Pedido</button>
+    <button onclick="limparCarrinho()">Limpar</button>
+
+  </div>
+</div>
+
+<script src="balcao.js"></script>
+
+</body>
+</html>

@@ -30,6 +30,14 @@ function escapeHtml(str){
     .replace(/'/g, "&#39;");
 }
 
+// 📊 REGISTRAR PEDIDO NO PAINEL (fire-and-forget)
+function registrarPedido(pedido){
+  fetch(API, {
+    method: "POST",
+    body: JSON.stringify({ acao: "registrar", pedido: pedido })
+  }).catch(() => {});
+}
+
 // 🎨 RENDER PRODUTOS
 function render(lista){
 
@@ -301,6 +309,17 @@ function finalizar(){
 
   // 🚀 ABRE WHATSAPP
   window.open("https://wa.me/5532991933822?text=" + encodeURIComponent(texto));
+
+  // 📊 REGISTRA NO PAINEL (não trava o pedido se falhar)
+  registrarPedido({
+    numero: numeroPedido,
+    origem: "site",
+    local: tipo,
+    cliente: nome,
+    itens: carrinho.map(p => ({ nome: p.nome, qtd: p.qtd, preco: p.preco })),
+    total: total,
+    observacao: observacao
+  });
 
   // ⏱️ PEQUENO DELAY PRA UX
   setTimeout(() => {

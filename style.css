@@ -136,6 +136,121 @@ body {
   color: var(--color-ink-soft);
 }
 
+/* PAINEL — ESTATÍSTICAS */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 4px 14px 12px;
+}
+
+.stat-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 16px;
+  text-align: center;
+}
+
+.stat-numero {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.stat-label {
+  display: block;
+  font-size: 12px;
+  color: var(--color-ink-soft);
+  margin-top: 4px;
+}
+
+/* PAINEL — SEÇÕES */
+.painel-secao {
+  padding: 4px 14px 16px;
+}
+
+.painel-secao h2 {
+  font-size: 15px;
+  margin: 10px 0;
+}
+
+.ranking-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-surface);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  box-shadow: var(--shadow-sm);
+  font-size: 13px;
+}
+
+.ranking-pos {
+  font-weight: 700;
+  min-width: 24px;
+}
+
+.ranking-nome {
+  flex: 1;
+  font-weight: 600;
+}
+
+.ranking-qtd {
+  color: var(--color-ink-soft);
+}
+
+.ranking-receita {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.historico-item {
+  background: var(--color-surface);
+  border-radius: 10px;
+  padding: 10px 12px;
+  margin-bottom: 8px;
+  box-shadow: var(--shadow-sm);
+}
+
+.historico-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.historico-origem {
+  font-size: 11px;
+  color: var(--color-ink-soft);
+}
+
+.historico-total {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.historico-meta {
+  font-size: 11px;
+  color: var(--color-ink-soft);
+  margin-top: 2px;
+}
+
+.historico-itens {
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.vazio {
+  color: var(--color-ink-soft);
+  font-size: 13px;
+  text-align: center;
+  padding: 20px 0;
+}
+
 /* PRODUTOS RESPONSIVO TOP */
 #produtos {
   display: grid;

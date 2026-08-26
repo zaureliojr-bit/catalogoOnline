@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+
+  <title>Cafofo da Sissi — Painel</title>
+
+  <meta name="theme-color" content="#ff7f00">
+  <link rel="icon" type="image/png" href="icons/icon-192.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="header">
+  <div class="header-left">
+    <img src="https://i.ibb.co/ZRt23jfV/C-pia-de-Yellow-Inspiration-Modern-Instagram-Profile-Picture.png" class="logo-gif">
+
+    <div class="titulo">
+      <h1>Cafofo da Sissi 🍔</h1>
+      <span id="status">🔴 Carregando... · Painel</span>
+    </div>
+  </div>
+</div>
+
+<div class="filtros">
+  <button class="ativo" onclick="filtrarPeriodo('hoje', event)">Hoje</button>
+  <button onclick="filtrarPeriodo('7', event)">7 dias</button>
+  <button onclick="filtrarPeriodo('30', event)">30 dias</button>
+  <button onclick="filtrarPeriodo('tudo', event)">Tudo</button>
+</div>
+
+<div class="stats-grid">
+  <div class="stat-card">
+    <span class="stat-numero" id="statPedidos">0</span>
+    <span class="stat-label">Pedidos</span>
+  </div>
+  <div class="stat-card">
+    <span class="stat-numero" id="statFaturamento">R$ 0,00</span>
+    <span class="stat-label">Faturamento</span>
+  </div>
+</div>
+
+<div class="painel-secao">
+  <h2>🏆 Mais vendidos</h2>
+  <div id="ranking"></div>
+</div>
+
+<div class="painel-secao">
+  <h2>🧾 Histórico de pedidos</h2>
+  <div id="historico"></div>
+</div>
+
+<script src="painel.js"></script>
+
+</body>
+</html>
